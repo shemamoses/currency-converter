@@ -1,4 +1,5 @@
 const express = require("express");
+const axios = require("axios");
 const CC = require("currency-converter-lt");
 
 const app = express();
@@ -6,16 +7,50 @@ const port = process.env.PORT || 4000;
 
 app.use(express.static("views"));
 app.set("view engine", "ejs");
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-let currencyConverter = new CC();
-app.post("/convert", (req, res) => {
-  const { amount } = req.body;
-  currencyConverter.convert();
-  res.send("you sent money to convert");
+const currencyConverter = new CC();
+
+app.post("/convert", async(req, res) => {
+  let { amount, fromCurrency, toCurrency } = req.body;
+
+  // Parse the amount as a number
+  amount = Number(amount);
+  console.log(typeof amount);
+  // Check if the amount is a valid number
+  if (isNaN(amount)) {
+    res.send("Invalid amount");
+    return;
+  }
+
+  //converting
+  
+  const result = await currencyConverter.convert({
+    amount,
+    from: fromCurrency,
+    to: toCurrency,
+  });
+
+  res.send(`Converted amount: ${result}`);
+});
+
+app.get("/countries", async (req, res) => {
+  const response = await axios.get("https://flagcdn.com/en/codes.json");
+  const countries = response.data;
+
+  // Convert the API response object into an array of country objects
+  const countryArray = Object.entries(countries).map(([code, name]) => ({
+    code,
+    name,
+  }));
+
+  res.render("index", { countries: countryArray });
 });
 
 app.get("/", (req, res) => {
   res.render("index");
+
 });
 
 app.listen(port, () => {
