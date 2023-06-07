@@ -7,7 +7,10 @@ const port = process.env.PORT || 4000;
 app.use(express.static("views"));
 app.set("view engine", "ejs");
 
+let currencyConverter = new CC();
 app.post("/convert", (req, res) => {
+  const { amount } = req.body;
+  currencyConverter.convert();
   res.send("you sent money to convert");
 });
 
