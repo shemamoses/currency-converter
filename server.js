@@ -4,12 +4,15 @@ const CC = require("currency-converter-lt");
 const app = express();
 const port = process.env.PORT || 4000;
 
+app.use(express.static("views"));
+app.set("view engine", "ejs");
+
 app.post("/convert", (req, res) => {
   res.send("you sent money to convert");
 });
 
 app.get("/", (req, res) => {
-  res.send("this is a route");
+  res.render("index");
 });
 
 app.listen(port, () => {

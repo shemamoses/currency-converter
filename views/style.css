@@ -1,0 +1,105 @@
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Global Styles */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  .wrapper {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    text-align: center;
+  }
+  
+  .amount {
+    margin-bottom: 20px;
+  }
+  
+  .amount p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .amount input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .drop-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .drop-list .from,
+  .drop-list .to {
+    width: 120px;
+    text-align: center;
+  }
+  
+  .drop-list .select-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .drop-list .select-box img {
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  
+  .drop-list select {
+    padding: 6px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .icon {
+    margin: 0 20px;
+  }
+  
+  .exchange-rate {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: #ffffff;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
