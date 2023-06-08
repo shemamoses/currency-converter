@@ -16,22 +16,22 @@ app.post("/convert", async (req, res) => {
 
   // Parse the amount as a number
   amount = Number(amount);
-  console.log(typeof amount);
-  // Check if the amount is a valid number
-  if (isNaN(amount)) {
-    res.send("Invalid amount");
-    return;
-  }
+
+  
 
   //converting
 
-  const result = await currencyConverter.convert({
-    amount,
-    from: fromCurrency,
-    to: toCurrency,
-  });
-
-  res.send(`Converted amount: ${result}`);
+  try {
+    const result = await currencyConverter.convert({
+      amount,
+      from: fromCurrency,
+      to: toCurrency,
+    });
+    res.send(`Converted amount: ${result}`);
+  } catch (error) {
+    console.error("Currency conversion error:", error);
+    res.status(500).send("An error occurred during currency conversion.");
+  }
 });
 
 app.get("/countries", async (req, res) => {
@@ -49,7 +49,7 @@ app.get("/countries", async (req, res) => {
 
 app.get("/", (req, res) => {
   res.render("index");
-  res.redirect('/countries')
+  res.redirect("/countries");
 });
 
 app.listen(port, () => {
