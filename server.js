@@ -17,7 +17,7 @@ app.post("/convert", async (req, res) => {
   // Parse the amount as a number
   amount = Number(amount);
   
-  
+
 
   //converting
 
@@ -30,7 +30,8 @@ app.post("/convert", async (req, res) => {
     res.send(`Converted amount: ${result}`);
   } catch (error) {
     console.error("Currency conversion error:", error);
-    res.status(500).send("An error occurred during currency conversion.");
+    
+    res.status(500).send("conversion error");
   }
 });
 
