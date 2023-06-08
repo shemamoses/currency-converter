@@ -9,10 +9,9 @@ app.use(express.static("views"));
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 const currencyConverter = new CC();
 
-app.post("/convert", async(req, res) => {
+app.post("/convert", async (req, res) => {
   let { amount, fromCurrency, toCurrency } = req.body;
 
   // Parse the amount as a number
@@ -25,7 +24,7 @@ app.post("/convert", async(req, res) => {
   }
 
   //converting
-  
+
   const result = await currencyConverter.convert({
     amount,
     from: fromCurrency,
@@ -50,7 +49,7 @@ app.get("/countries", async (req, res) => {
 
 app.get("/", (req, res) => {
   res.render("index");
-
+  res.redirect('/countries')
 });
 
 app.listen(port, () => {
