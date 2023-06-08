@@ -36,7 +36,7 @@ app.post("/convert", async (req, res) => {
 });
 
 app.get("/countries", async (req, res) => {
-  const response = await currencyConverter.getCountries();
+  const response = await axios.get("https://api.iban.com/clients/api/v4/iban/");
   console.log(response)
   const countries = response.data;
 
