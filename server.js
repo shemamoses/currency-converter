@@ -16,7 +16,7 @@ app.post("/convert", async (req, res) => {
 
   // Parse the amount as a number
   amount = Number(amount);
-
+  
   
 
   //converting
@@ -35,7 +35,8 @@ app.post("/convert", async (req, res) => {
 });
 
 app.get("/countries", async (req, res) => {
-  const response = await axios.get("https://flagcdn.com/en/codes.json");
+  const response = await currencyConverter.getCountries();
+  console.log(response)
   const countries = response.data;
 
   // Convert the API response object into an array of country objects
